@@ -179,28 +179,63 @@ public class ReportController {
         return -1;
     }
 
-    private void buildRevenueChart(ArrayList<Nota> notaInRange) {
-        Map<LocalDate, Double> perDay = new HashMap<>();
-        for (Nota n : notaInRange) {
-            perDay.merge(n.getTanggal(), n.getTotalBayar(), Double::sum);
+    private int sequentialSearch(ArrayList<?> keys, Object key) {
+        for (int i = 0; i < keys.size(); i++) {
+            if (keys.get(i).equals(key)) {
+                return i;
+            }
         }
+        return -1;
+    }
+ 
+    private void buildRevenueChart(ArrayList<Nota> notaInRange) {
+        ArrayList<LocalDate> perDayDates = new ArrayList<>();
+        ArrayList<Double> perDayTotals = new ArrayList<>();
+ 
+        for (Nota n : notaInRange) {
+            int idx = sequentialSearch(perDayDates, n.getTanggal());
+            if (idx == -1) {
+                perDayDates.add(n.getTanggal());
+                perDayTotals.add(n.getTotalBayar());
+            } else {
+                perDayTotals.set(idx, perDayTotals.get(idx) + n.getTotalBayar());
+            }
+        }
+ 
+        // Pair dates with totals and sort by date ascending (same ordering the
+        // previous HashMap + sorted-stream version produced).
+        ArrayList<Integer> order = new ArrayList<>();
+        for (int i = 0; i < perDayDates.size(); i++) order.add(i);
+        order.sort(Comparator.comparing(perDayDates::get));
+ 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Pendapatan Harian");
-        perDay.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey())
-                .forEach(e -> series.getData().add(new XYChart.Data<>(e.getKey().toString(), e.getValue())));
-
+        for (int i : order) {
+            series.getData().add(new XYChart.Data<>(perDayDates.get(i).toString(), perDayTotals.get(i)));
+        }
+ 
         chartRevenue.getData().clear();
         chartRevenue.getData().add(series);
     }
 
     private void buildExpensePieChart(ArrayList<Pengeluaran> biayaInRange) {
-        Map<String, Double> perCategory = new HashMap<>();
+        ArrayList<String> categories = new ArrayList<>();
+        ArrayList<Double> totals = new ArrayList<>();
+ 
         for (Pengeluaran p : biayaInRange) {
-            perCategory.merge(p.getKategori(), p.getJumlah(), Double::sum);
+            int idx = sequentialSearch(categories, p.getKategori());
+            if (idx == -1) {
+                categories.add(p.getKategori());
+                totals.add(p.getJumlah());
+            } else {
+                totals.set(idx, totals.get(idx) + p.getJumlah());
+            }
         }
+ 
         ArrayList<PieChart.Data> slices = new ArrayList<>();
-        perCategory.forEach((kategori, total) -> slices.add(new PieChart.Data(kategori, total)));
+        for (int i = 0; i < categories.size(); i++) {
+            slices.add(new PieChart.Data(categories.get(i), totals.get(i)));
+        }
         chartExpenseComposition.setData(FXCollections.observableArrayList(slices));
     }
 
