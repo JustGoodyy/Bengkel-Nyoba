@@ -16,28 +16,12 @@ import model.UserSession;
 import util.AnimationUtil;
 import javafx.scene.image.ImageView;
 
-/**
- * Controller for view/MainLayout.fxml
- * Owns the sidebar + the "contentArea" StackPane. Clicking a sidebar button
- * swaps the center content WITHOUT opening a new window, per the spec.
- *
- * ROLE-BASED ACCESS CONTROL:
- *  - ADMIN  -> full access to Dashboard, Inventory, Cashier, Report
- *  - KASIR  -> Dashboard + Cashier only
- * Enforced in two layers:
- *   1) UI layer  (applyRoleRestrictions): hides Inventory/Report buttons for Kasir
- *   2) Nav layer (goToInventory/goToReport): refuses to load the view even if
- *      invoked some other way, so the restriction isn't just "hide the button".
- */
 public class MainLayoutController {
 
     @FXML private StackPane contentArea;
     @FXML private Label lblActiveUser;
     @FXML private VBox sidebarMenuBox;
     @FXML private Button btnLogout;
-
-    // NEW: give each sidebar button an fx:id in MainLayout.fxml so we can
-    // show/hide them individually (see FXML notes below).
     @FXML private Button btnDashboard;
     @FXML private Button btnInventory;
     @FXML private Button btnCashier;
@@ -53,7 +37,6 @@ public class MainLayoutController {
             lblActiveUser.setText(current.getUsername() + " (" + current.getRole() + ")");
         }
 
-        // Micro-interaction: sidebar buttons grow slightly on hover
         for (Node child : sidebarMenuBox.getChildren()) {
             if (child instanceof Button) {
                 AnimationUtil.attachHoverScale(child, 1.04);
@@ -67,7 +50,6 @@ public class MainLayoutController {
     }
     
 
-    /** Hides menu items the current role isn't allowed to see. */
     private void applyRoleRestrictions() {
         if (!isAdmin()) {
             hide(btnInventory);
@@ -78,7 +60,7 @@ public class MainLayoutController {
     private void hide(Button b) {
         if (b == null) return;
         b.setVisible(false);
-        b.setManaged(false); // collapse the space too, not just invisible
+        b.setManaged(false); 
     }
 
     private boolean isAdmin() {
@@ -102,7 +84,6 @@ public class MainLayoutController {
         loadView("/view/Report.fxml");
     }
 
-    /** Called when a non-admin role somehow triggers a restricted nav action. */
     private void denyAccess() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Akses Ditolak");

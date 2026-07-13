@@ -1,21 +1,12 @@
 package model;
 
-/**
- * Model: SparePart
- * One row of the Spare Part Catalog (/data/sparepart.xml).
- *
- * NOTE (assumption): the brief only specifies a Selling Price. To let the
- * Financial Report menu compute a real COGS (Cost of Goods Sold), a
- * hargaModal (cost/purchase price) field is added. If it is not supplied
- * on the input form it defaults to 60% of the selling price.
- */
 public class SparePart {
-    private String kode;        // unique code, e.g. SP-0001
-    private String nama;        // part name
-    private String kategori;    // category (from ComboBox)
-    private int stok;           // current stock
-    private double hargaJual;   // selling price
-    private double hargaModal;  // cost price (assumption, used for COGS)
+    private String kode;       
+    private String nama;      
+    private String kategori;   
+    private int stok;         
+    private double hargaJual;
+    private double hargaModal; 
 
     public SparePart() {}
 
@@ -48,7 +39,6 @@ public class SparePart {
 
     @Override
     public String toString() {
-        // Used by the ComboBox in the Cashier screen
         return kode + " - " + nama + " (Stok: " + stok + ")";
     }
 }

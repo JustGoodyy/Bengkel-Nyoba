@@ -2,14 +2,10 @@ package model;
 
 import java.time.LocalDate;
 
-/**
- * Model: Pengeluaran
- * An operational expense entry (electricity, salary, etc.), /data/pengeluaran.xml.
- */
 public class Pengeluaran {
     private String idPengeluaran;
     private LocalDate tanggal;
-    private String keterangan; // e.g. "Listrik", "Gaji Mekanik"
+    private String keterangan; 
     private String kategori;
     private double jumlah;
 

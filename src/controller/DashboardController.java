@@ -10,16 +10,11 @@ import model.Nota;
 import model.Pengeluaran;
 import model.SparePart;
 import util.XmlDatabase;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import javafx.scene.image.ImageView;
 
-/**
- * Controller for view/Dashboard.fxml — Menu 4: DASHBOARD / SUMMARY
- * Purely Read-Only: only ever filters data already in the XML files.
- */
 public class DashboardController {
 
     @FXML private TableView<SparePart> tableLowStock;

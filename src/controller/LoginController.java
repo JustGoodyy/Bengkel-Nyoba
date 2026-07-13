@@ -15,14 +15,8 @@ import model.User;
 import model.UserSession;
 import util.AnimationUtil;
 import util.XmlDatabase;
-
 import java.util.ArrayList;
 
-/**
- * Controller for view/Login.fxml
- * Verifies credentials against data/users.xml and, on success, hands off
- * to MainLayout.fxml (the shell that hosts the Sidebar + Dashboard).
- */
 public class LoginController {
 
     @FXML private VBox loginCard;
@@ -35,12 +29,12 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        AnimationUtil.fadeIn(loginCard, 450); // welcoming fade-in on first launch
+        AnimationUtil.fadeIn(loginCard, 450); 
     }
 
     @FXML
     public void handleLogin(ActionEvent event) {
-        AnimationUtil.pulse(btnLogin); // tactile feedback on every click, success or not
+        AnimationUtil.pulse(btnLogin); 
 
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
@@ -68,7 +62,6 @@ public class LoginController {
             return;
         }
 
-        // Store identity globally for the rest of the app
         UserSession.getInstance().setCurrentUser(matched);
 
         try {

@@ -11,18 +11,10 @@ import model.Pengeluaran;
 import model.SparePart;
 import util.AnimationUtil;
 import util.XmlDatabase;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/**
- * Controller for view/Cashier.fxml — Menu 2: CASHIER TRANSACTIONS
- * Two independent flows on one screen:
- *  1) Service receipt (cart of SparePart -> NotaItem -> Nota, deducts stock)
- *  2) Operational expense (Pengeluaran)
- * Update/Delete are intentionally absent here: once paid, a Nota is final.
- */
 public class CashierController {
 
     // --- Cart / Receipt section ---
@@ -41,7 +33,6 @@ public class CashierController {
     @FXML private Button btnAddToCart;
     @FXML private Button btnSimpanNota;
 
-    // --- Expense section ---
     @FXML private TextField txtKeteranganBiaya;
     @FXML private ComboBox<String> cbKategoriBiaya;
     @FXML private DatePicker dpTanggalBiaya;
@@ -58,7 +49,7 @@ public class CashierController {
     @FXML
     public void initialize() {
         spareparts = sparepartDb.loadAll();
-        cbSparepart.setItems(FXCollections.observableArrayList(spareparts)); // SparePart.toString() drives display
+        cbSparepart.setItems(FXCollections.observableArrayList(spareparts)); 
 
         colCartNama.setCellValueFactory(new PropertyValueFactory<>("namaPart"));
         colCartQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
@@ -69,7 +60,6 @@ public class CashierController {
         cbKategoriBiaya.setItems(FXCollections.observableArrayList(
                 "Listrik", "Gaji", "Sewa", "Perawatan Alat", "Lain-lain"));
 
-        // Default both date pickers to today; user can change to backdate a transaction
         dpTanggalNota.setValue(LocalDate.now());
         dpTanggalBiaya.setValue(LocalDate.now());
 
@@ -149,7 +139,6 @@ public class CashierController {
             return;
         }
 
-        // 1) Persist the Nota
         Nota nota = new Nota(
                 "NOTA-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase(),
                 dpTanggalNota.getValue(),
@@ -161,7 +150,6 @@ public class CashierController {
         allNota.add(nota);
         notaDb.saveAll(allNota);
 
-        // 2) Deduct stock in sparepart.xml for every item sold
         for (NotaItem item : cart) {
             for (SparePart sp : spareparts) {
                 if (sp.getKode().equals(item.getKodePart())) {
@@ -171,7 +159,6 @@ public class CashierController {
         }
         sparepartDb.saveAll(spareparts);
 
-        // 3) Reset the form for the next customer
         cart.clear();
         txtCustomer.clear();
         txtJasaMekanik.clear();

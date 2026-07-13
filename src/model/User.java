@@ -1,9 +1,5 @@
 package model;
 
-/**
- * Model: User
- * Represents one row of /data/users.xml (persisted via XStream).
- */
 public class User {
     private String username;
     private String password;

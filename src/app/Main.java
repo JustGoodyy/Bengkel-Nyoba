@@ -6,11 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * app.Main
- * Entry point. Boots straight into the Login screen.    
- * No build tool: compiled/run manually, see compile.sh / run.sh.
- */
 public class Main extends Application {
 
     @Override

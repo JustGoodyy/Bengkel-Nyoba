@@ -1,9 +1,5 @@
 package model;
 
-/**
- * Model: NotaItem
- * One line inside the cashier's "shopping cart" / receipt (Nota).
- */
 public class NotaItem {
     private String kodePart;
     private String namaPart;

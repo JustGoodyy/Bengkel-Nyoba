@@ -21,8 +21,6 @@ import util.XmlDatabase;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 public class ReportController {
@@ -73,21 +71,17 @@ public class ReportController {
     }
     
 
-    /** Wires up the Clean Minimalist Icon buttons for each ledger row. */
     private void setupAksiColumn() {
         colAksi.setCellFactory(col -> new TableCell<JurnalHarian, Void>() {
-            // Menggunakan Unicode Simbol Representatif (Edit: 📝, Hapus: 🗑)
             private final Button btnEdit = new Button("📝");
             private final Button btnDelete = new Button("🗑");
-            private final HBox box = new HBox(12, btnEdit, btnDelete); // Gap renggang 12px
+            private final HBox box = new HBox(12, btnEdit, btnDelete); 
 
             {
-                // Pengaturan Gaya CSS Kustom agar Tombol Berupa Ikon Bersih Tanpa Box Kaku
                 btnEdit.getStyleClass().add("btn-action-icon");
                 btnEdit.setTooltip(new Tooltip("Edit Entri"));
                 
                 btnDelete.getStyleClass().add("btn-action-icon");
-                // Memberikan penanda warna merah khusus untuk aksi hapus langsung via inline text style
                 btnDelete.setStyle("-fx-text-fill: #e53935;"); 
                 btnDelete.setTooltip(new Tooltip("Hapus Entri"));
 
@@ -201,9 +195,7 @@ public class ReportController {
                 perDayTotals.set(idx, perDayTotals.get(idx) + n.getTotalBayar());
             }
         }
- 
-        // Pair dates with totals and sort by date ascending (same ordering the
-        // previous HashMap + sorted-stream version produced).
+
         ArrayList<Integer> order = new ArrayList<>();
         for (int i = 0; i < perDayDates.size(); i++) order.add(i);
         order.sort(Comparator.comparing(perDayDates::get));

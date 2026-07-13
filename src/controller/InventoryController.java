@@ -8,15 +8,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.SparePart;
 import util.AnimationUtil;
 import util.XmlDatabase;
-
 import java.util.ArrayList;
 
-/**
- * Controller for view/Inventory.fxml — Menu 1: SPARE PART INVENTORY
- * Full CRUD cycle backed by data/sparepart.xml via XmlDatabase.
- *
- * Data flow: ArrayList<SparePart> (Model/XML level)  <-->  ObservableList<SparePart> (JavaFX UI level)
- */
 public class InventoryController {
 
     @FXML private TableView<SparePart> tableSparepart;
@@ -42,7 +35,6 @@ public class InventoryController {
 
     private final XmlDatabase<SparePart> db = new XmlDatabase<>("data/sparepart.xml", SparePart.class);
 
-    // The "ArrayList at Model/XML level" — bridged into ObservableList below
     private ArrayList<SparePart> masterList;
     private final ObservableList<SparePart> observableList = FXCollections.observableArrayList();
 
@@ -59,14 +51,12 @@ public class InventoryController {
 
         tableSparepart.setItems(observableList);
 
-        // Populate the form when a row is selected (for Update/Delete)
         tableSparepart.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) fillForm(newSel);
         });
 
         refreshFromDisk();
 
-        // Live search by name or code
         txtSearch.textProperty().addListener((obs, oldVal, newVal) -> applyFilter(newVal));
     }
 
@@ -90,7 +80,6 @@ public class InventoryController {
         observableList.setAll(filtered);
     }
 
-    // ---------- CREATE ----------
     @FXML
     public void handleAdd() {
         AnimationUtil.pulse(btnAdd);
@@ -120,7 +109,6 @@ public class InventoryController {
         lblFormStatus.setText("Item berhasil ditambahkan.");
     }
 
-    // ---------- UPDATE ----------
     @FXML
     public void handleUpdate() {
         AnimationUtil.pulse(btnUpdate);
@@ -142,7 +130,6 @@ public class InventoryController {
         lblFormStatus.setText("Item berhasil diperbarui.");
     }
 
-    // ---------- DELETE ----------
     @FXML
     public void handleDelete() {
         AnimationUtil.pulse(btnDelete);
@@ -163,7 +150,6 @@ public class InventoryController {
         clearForm();
     }
 
-    // ---------- helpers ----------
     private void fillForm(SparePart sp) {
         txtKode.setText(sp.getKode());
         txtKode.setDisable(true); // kode is the primary key: not editable after creation
@@ -192,7 +178,6 @@ public class InventoryController {
                 return Double.parseDouble(txtHargaModal.getText().trim());
             }
         } catch (NumberFormatException ignored) { }
-        // Assumption fallback: 60% of selling price when cost price isn't provided
         return Double.parseDouble(txtHargaJual.getText().trim()) * 0.6;
     }
 
