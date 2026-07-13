@@ -52,23 +52,7 @@ BengkelApp/
 └── README.md
 ```
 
-## 2. How to compile & run (no build tool)
-
-1. Download a **JavaFX SDK** matching your JDK (17+ recommended) from
-   `gluonhq.com/products/javafx`.
-2. Download **XStream** (`xstream-1.4.20.jar` or newer) from
-   `x-stream.github.io/download.html` and place it in `lib/`.
-3. Edit the two path variables at the top of `compile.sh` and `run.sh`:
-   - `JAVAFX_LIB` → the `lib` folder inside the JavaFX SDK you downloaded.
-   - `XSTREAM_JAR` → path to the jar you placed in `./lib`.
-4. Run:
-   ```bash
-   ./compile.sh
-   ./run.sh
-   ```
-5. Login with the seeded demo account: **admin / admin123**.
-
-## 3. Architecture notes (MVC + data flow)
+## 2. Architecture notes (MVC + data flow)
 
 - **Model** (`model/*`) — plain POJOs, zero JavaFX imports, safe to unit test
   and safe for XStream to (de)serialize.
@@ -85,7 +69,7 @@ BengkelApp/
   into a `StackPane` in the center of `MainLayout.fxml` — no new windows are
   opened, matching the requirement.
 
-## 4. Chart <-> XML data flow (Dashboard/Report)
+## 3. Chart <-> XML data flow (Dashboard/Report)
 
 `ReportController.buildRevenueChart()` shows the exact pattern used
 everywhere charts read from XML:
@@ -105,7 +89,7 @@ chartRevenue.getData().add(series);
 The same read → aggregate → push pattern is used for the PieChart (expense
 category totals) and the Dashboard's low-stock / recent-transactions tables.
 
-## 5. Assumptions made beyond the original brief
+## 4. Assumptions made beyond the original brief
 
 - **COGS / harga modal**: the brief only specifies a selling price for spare
   parts. A `hargaModal` (cost price) field was added to `SparePart` so the
