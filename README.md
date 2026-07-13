@@ -1,8 +1,7 @@
 # Bengkel Management System (Workshop Management App)
 
-Pure Java OOP + JavaFX, strict **MVC**, package-by-feature, no build tool
-(no Maven/Gradle — plain `javac`). Persistence is **XML files via XStream**
-(no SQL database).
+Untuk Memenuhi Tugas Beasr RPL + FPA + ASD
+Kelompok Keren 
 
 ## 1. Project Structure
 
