@@ -1,1 +1,59 @@
-<?xml version="1.0" ?><list><jurnalharian><tanggal>2026-07-09</tanggal><keterangan>gaji karyawan</keterangan><jenis>PENGELUARAN</jenis><pemasukan>0.0</pemasukan><pengeluaran>500000.0</pengeluaran><id>EXP-BEBE210C</id></jurnalharian><jurnalharian><tanggal>2026-07-12</tanggal><keterangan>Nota NOTA-441C9CE3 - Pai</keterangan><jenis>PEMASUKAN</jenis><pemasukan>200000.0</pemasukan><pengeluaran>0.0</pengeluaran><id>NOTA-441C9CE3</id></jurnalharian><jurnalharian><tanggal>2026-07-13</tanggal><keterangan>Nota NOTA-51726F40 - Rizky</keterangan><jenis>PEMASUKAN</jenis><pemasukan>2000000.0</pemasukan><pengeluaran>0.0</pengeluaran><id>NOTA-51726F40</id></jurnalharian><jurnalharian><tanggal>2026-07-13</tanggal><keterangan>Nota NOTA-2780337A - Malam</keterangan><jenis>PEMASUKAN</jenis><pemasukan>100000.0</pemasukan><pengeluaran>0.0</pengeluaran><id>NOTA-2780337A</id></jurnalharian><jurnalharian><tanggal>2026-07-13</tanggal><keterangan>Sewa Ruko</keterangan><jenis>PENGELUARAN</jenis><pemasukan>0.0</pemasukan><pengeluaran>3500000.0</pengeluaran><id>EXP-728656D9</id></jurnalharian><jurnalharian><tanggal>2026-07-13</tanggal><keterangan>Perawatan Alat</keterangan><jenis>PENGELUARAN</jenis><pemasukan>0.0</pemasukan><pengeluaran>300000.0</pengeluaran><id>EXP-30187644</id></jurnalharian><jurnalharian><tanggal>2026-07-14</tanggal><keterangan>Nota NOTA-680096F1 - Juno</keterangan><jenis>PEMASUKAN</jenis><pemasukan>550000.0</pemasukan><pengeluaran>0.0</pengeluaran><id>NOTA-680096F1</id></jurnalharian></list>
+<?xml version="1.0"?>
+<list>
+    <jurnalharian>
+        <tanggal>2026-07-09</tanggal>
+        <keterangan>gaji karyawan</keterangan>
+        <jenis>PENGELUARAN</jenis>
+        <pemasukan>0.0</pemasukan>
+        <pengeluaran>500000.0</pengeluaran>
+        <id>EXP-BEBE210C</id>
+    </jurnalharian>
+    <jurnalharian>
+        <tanggal>2026-07-12</tanggal>
+        <keterangan>Nota NOTA-441C9CE3 - Pai</keterangan>
+        <jenis>PEMASUKAN</jenis>
+        <pemasukan>200000.0</pemasukan>
+        <pengeluaran>0.0</pengeluaran>
+        <id>NOTA-441C9CE3</id>
+    </jurnalharian>
+    <jurnalharian>
+        <tanggal>2026-07-13</tanggal>
+        <keterangan>Nota NOTA-51726F40 - Rizky</keterangan>
+        <jenis>PEMASUKAN</jenis>
+        <pemasukan>2000000.0</pemasukan>
+        <pengeluaran>0.0</pengeluaran>
+        <id>NOTA-51726F40</id>
+    </jurnalharian>
+    <jurnalharian>
+        <tanggal>2026-07-13</tanggal>
+        <keterangan>Nota NOTA-2780337A - Malam</keterangan>
+        <jenis>PEMASUKAN</jenis>
+        <pemasukan>100000.0</pemasukan>
+        <pengeluaran>0.0</pengeluaran>
+        <id>NOTA-2780337A</id>
+    </jurnalharian>
+    <jurnalharian>
+        <tanggal>2026-07-13</tanggal>
+        <keterangan>Sewa Ruko</keterangan>
+        <jenis>PENGELUARAN</jenis>
+        <pemasukan>0.0</pemasukan>
+        <pengeluaran>3500000.0</pengeluaran>
+        <id>EXP-728656D9</id>
+    </jurnalharian>
+    <jurnalharian>
+        <tanggal>2026-07-13</tanggal>
+        <keterangan>Perawatan Alat</keterangan>
+        <jenis>PENGELUARAN</jenis>
+        <pemasukan>0.0</pemasukan>
+        <pengeluaran>300000.0</pengeluaran>
+        <id>EXP-30187644</id>
+    </jurnalharian>
+    <jurnalharian>
+        <tanggal>2026-07-14</tanggal>
+        <keterangan>Nota NOTA-680096F1 - Juno</keterangan>
+        <jenis>PEMASUKAN</jenis>
+        <pemasukan>550000.0</pemasukan>
+        <pengeluaran>0.0</pengeluaran>
+        <id>NOTA-680096F1</id>
+    </jurnalharian>
+</list>
