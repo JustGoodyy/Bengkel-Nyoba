@@ -68,7 +68,9 @@ public class MainLayoutController {
                 && ROLE_ADMIN.equalsIgnoreCase(UserSession.getInstance().getCurrentUser().getRole());
     }
 
-    @FXML public void goToDashboard() { loadView("/view/Dashboard.fxml"); }
+    @FXML public void goToDashboard() { 
+        loadView("/view/Dashboard.fxml"); 
+    }
 
     @FXML
     public void goToInventory() {
@@ -76,7 +78,9 @@ public class MainLayoutController {
         loadView("/view/Inventory.fxml");
     }
 
-    @FXML public void goToCashier() { loadView("/view/Cashier.fxml"); }
+    @FXML public void goToCashier() { 
+        loadView("/view/Cashier.fxml"); 
+    }
 
     @FXML
     public void goToReport() {
